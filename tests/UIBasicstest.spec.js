@@ -55,6 +55,7 @@ test('First Playwright test', async ({page})=>
          //checkbox
        await page.locator("#terms").click();
        await expect(page.locator("#terms")).toBeChecked();
+     //  await expect(page.locator("#terms")).uncheck();
        
         });
     
