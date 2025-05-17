@@ -64,7 +64,7 @@ test('First Playwright test', async ({page})=>
 
     
 
-        test.only('Child window handling', async ({browser})=>
+        test('Child windows handling', async ({browser})=>
             {
             const context = await browser.newContext();
             const page = await context.newPage();
@@ -85,6 +85,6 @@ test('First Playwright test', async ({page})=>
            const domain = arrayText[1].split(" ")[0].trim();
             console.log(domain);
            await page.locator("#username").fill(domain);
-           await page.pause();
+          //  await page.pause();
            console.log(await page.locator("#username").textContent());
             });

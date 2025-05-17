@@ -14,8 +14,11 @@ reporter: 'html',
   
   use: {
   
- browserName:'firefox',
- headless: false
+ browserName:'chromium',
+ headless: false,
+ screenshot: 'only-on-failure',
+ video: 'retain-on-failure',
+  trace: 'retain-on-failure',
    
   },
 
