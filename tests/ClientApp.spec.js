@@ -1,7 +1,7 @@
 const {test, expect} = require('@playwright/test');
 
 
-test('@WC Client App login', async ({page})=>
+test('Client App login', async ({page})=>
     {
      const email = "rangataft08@gmail.com";
      const productName = "ZARA COAT 3";
