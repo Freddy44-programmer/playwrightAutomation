@@ -1,4 +1,5 @@
 const {test, expect} = require('@playwright/test');
+const {customtest} = require('../utils/test-base');
 const {POManager} =require('../pageobjects/POManager');
 //Json->string->js object
 const dataSet = JSON.parse(JSON.stringify(require("../utils/placeorderTestData.json")));
@@ -51,3 +52,29 @@ test(`Client App login ${data.productName}`, async ({page})=>
             
 });
 }
+
+
+customtest.only(`Client App login with test data as fixture`, async ({page,testDataForOrder})=>
+    {
+    //class instance of POManager
+    //this will create an instance of the POManager class and pass the page object to it
+    //this will allow us to access the page objects for login and dashboard pages
+    const poManager = new POManager(page);
+
+     // this will navigate to the login page and perform login
+     const loginPage = poManager.getLoginPage();
+     await loginPage.goTo();
+     await loginPage.validLogin(testDataForOrder.username, testDataForOrder.password);
+
+     
+    // this will search for the product and add it to the cart and then navigate to the cart
+    const dashboardPage = poManager.getDashboardPage();
+     await dashboardPage.searchProductAddToCart(testDataForOrder.productName);
+     await dashboardPage.navigateToCart();
+     
+  
+    // this will verify the product is displayed in the cart and then proceed to checkout
+    const cartPage = poManager.getCartPage();
+    await cartPage.VerifyProductIsDisplayed(testDataForOrder.productName);
+    await cartPage.Checkout();
+});
