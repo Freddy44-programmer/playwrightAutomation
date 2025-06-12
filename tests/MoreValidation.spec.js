@@ -3,7 +3,7 @@ const {test, expect} = require('@playwright/test');
 
 test.describe.configure({mode: 'parallel'});// Parallel execution of tests means tests will run at the same time
 // test.describe.configure({mode: 'serial'}); // Serial execution of tests which means tests will run one after another
-test('Popup validations', async ({page})=>
+test('@web Popup validations', async ({page})=>
 {
 await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
 // await page.goto("http://google.com");
@@ -31,7 +31,7 @@ console.log(textCheck.split(" ")[1]);
 
 
 
-test('Screenshot & Visual comparison', async ({page})=>{
+test('@web Screenshot & Visual comparison', async ({page})=>{
 await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
 await expect(page.locator("#displayed-text")).toBeVisible();
 await page.locator("#displayed-text").screenshot({path: 'screenshot.png'});
