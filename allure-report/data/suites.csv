@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","25804","@web Browser Context Playwright test","","Thu Jun 12 12:37:15 SAST 2025","passed","Thu Jun 12 12:37:40 SAST 2025","","UIBasicstest.spec.js","",""
+"","27050","@web Screenshot & Visual comparison","","Thu Jun 12 12:38:23 SAST 2025","passed","Thu Jun 12 12:38:50 SAST 2025","","MoreValidation.spec.js","",""
+"","21639","@web Popup validations","","Thu Jun 12 12:38:28 SAST 2025","passed","Thu Jun 12 12:38:49 SAST 2025","","MoreValidation.spec.js","",""

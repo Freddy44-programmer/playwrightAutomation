@@ -54,5 +54,11 @@ projects: [
 });
 // This is a Playwright configuration file that sets up the testing environment.
 // npx playwright test tests/ClientAppPO.spec.js --config playwright.config1.js --project=chrome 
+// npx playwright test --grep @web --project=chrome
+// npx playwright test --grep @web --project=firefox
+// npx playwright test --grep @web --project=edge
+// npx playwright test --grep @web --reporter=line,allure-playwright
+// allure generate ./allure-results --clean
+// allure open ./allure-report
 module.exports = config
 

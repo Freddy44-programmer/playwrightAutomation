@@ -2,7 +2,7 @@ const {test, expect} = require('@playwright/test');
 const { text } = require('stream/consumers');
 
 
-test('@web Browser Context Playwright test', async ({browser})=>{
+test('@web Browser Context Playwright test', async ({browser})=>{ 
 
 const context = await browser.newContext();
 const page = await context.newPage();
