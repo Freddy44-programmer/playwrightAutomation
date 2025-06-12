@@ -5,6 +5,8 @@ import { permission } from 'process';
 
 const config = ({
   testDir: './tests',
+  retries : 1, // Number of retries for failed tests
+  Workers: 3, // Number of parallel workers to run tests
   /*Maximum time one test can run for. */
 timeout: 40 * 1000,
 expect: {

@@ -28,7 +28,7 @@ console.log(textCheck.split(" ")[1]);
 
 
 
-test.only('Screenshot & Visual comparison', async ({page})=>{
+test('Screenshot & Visual comparison', async ({page})=>{
 await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
 await expect(page.locator("#displayed-text")).toBeVisible();
 await page.locator("#displayed-text").screenshot({path: 'screenshot.png'});

@@ -54,7 +54,7 @@ test(`Client App login ${data.productName}`, async ({page})=>
 }
 
 
-customtest.only(`Client App login with test data as fixture`, async ({page,testDataForOrder})=>
+customtest(`Client App login with test data as fixture`, async ({page,testDataForOrder})=>
     {
     //class instance of POManager
     //this will create an instance of the POManager class and pass the page object to it
