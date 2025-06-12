@@ -1,5 +1,8 @@
 const {test, expect} = require('@playwright/test');
 
+
+test.describe.configure({mode: 'parallel'});// Parallel execution of tests means tests will run at the same time
+// test.describe.configure({mode: 'serial'}); // Serial execution of tests which means tests will run one after another
 test('Popup validations', async ({page})=>
 {
 await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
