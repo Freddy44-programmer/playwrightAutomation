@@ -2,7 +2,17 @@
   "name": "playwrightautomation",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "regression": "npx playwright test",
+    "smoke": "npx playwright test --grep @smoke",
+    "webTests": "npx playwright test --grep @web",
+    "apiTests": "npx playwright test --grep @api",
+    "allure:generate": "npx allure generate --clean",
+    "allure:open": "npx allure open",
+    "Safari": "npx playwright test --project=Safari",
+    "chromium": "npx playwright test --project=chromium",
+    "firefox": "npx playwright test --project=firefox"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -13,6 +23,7 @@
     "allure-playwright": "^3.2.2"
   },
   "dependencies": {
+    "@cucumber/cucumber": "^11.3.0",
     "exceljs": "^4.4.0"
   }
 }

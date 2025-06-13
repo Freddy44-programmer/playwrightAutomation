@@ -60,5 +60,7 @@ projects: [
 // npx playwright test --grep @web --reporter=line,allure-playwright
 // allure generate ./allure-results --clean
 // allure open ./allure-report
+ //npm run webTests /// npm run webTests --project=chrome
+ //java -jar jenkins.war --httpPort=8080 --enable-future-java 
 module.exports = config
 
