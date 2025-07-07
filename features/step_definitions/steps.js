@@ -1,48 +1,42 @@
   const { Given, When, Then } = require('@cucumber/cucumber');
   const {POManager} =require('../../pageobjects/POManager');
-  const {test,expect, playwright} = require('@playwright/test');
+  const {expect} = require('@playwright/test');
+  const playwright = require('@playwright/test');
   
-  
-  Given('a login to the Ecommerce application with {username} and {password}', async function (username, password) {
-
-          // This first three lines are used to set up the Playwright environment
-          // and create a new page instance.
-          const browser = await playwright.chromium.launch();
-          const context = await browser.newContext();
-          const page = await context.newPage();
-          const poManager = new POManager(page);
-          const loginPage = poManager.getLoginPage();
+  Given('a login to the Ecommerce application with {string} and {string}', {timeout: 100*1000}, async function (username, password) {
+          const products = this.page.locator(".card-body");
+          const loginPage = this.poManager.getLoginPage();
           await loginPage.goTo();
-          await loginPage.validLogin(data.username, data.password);
+          await loginPage.validLogin(username, password);
          
          });
 
 
-         When('Add {string} to the cart', async function (string) {
-          const dashboardPage = poManager.getDashboardPage();
-          await dashboardPage.searchProductAddToCart(data.productName);
-          await dashboardPage.navigateToCart();
+         When('Add {string} to the cart', async function (productName) {
+          this.dashboardPage = this.poManager.getDashboardPage();
+          await this.dashboardPage.searchProductAddToCart(productName);
+          await this.dashboardPage.navigateToCart();
          });
 
 
-         Then('Verify {string} is displayed in the cart', async function (string) {
-          const cartPage = poManager.getCartPage();
-          await cartPage.VerifyProductIsDisplayed(data.productName);
+         Then('Verify {string} is displayed in the cart', async function (productName) {
+          const cartPage = this.poManager.getCartPage();
+          await cartPage.VerifyProductIsDisplayed(productName);
           await cartPage.Checkout();
 
          });
 
          When('Enter valid details and  Place the order',async function () {
-          const ordersReviewPage = poManager.getOrdersReviewPage();
+          const ordersReviewPage = this.poManager.getOrdersReviewPage();
           await ordersReviewPage.searchCountryAndSelect("ind","India");
-          const orderId = await ordersReviewPage.SubmitAndGetOrderId();
-          console.log(orderId);
+          this.orderId = await ordersReviewPage.SubmitAndGetOrderId();
+          console.log(this.orderId);
          });
 
 
          Then('Verify the order is presented in the order history', async function () {
-          await dashboardPage.navigateToOrders();
-          const ordersHistoryPage = poManager.getOrdersHistoryPage();
-          await ordersHistoryPage.searchOrderAndSelect(orderId);
-          expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
+          await this.dashboardPage.navigateToOrders();
+          const ordersHistoryPage = this.poManager.getOrdersHistoryPage();
+          await ordersHistoryPage.searchOrderAndSelect(this.orderId);
+          expect(this.orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
          });
